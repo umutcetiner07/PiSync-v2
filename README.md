@@ -15,3 +15,20 @@ It allows users to compare product prices across vendors, build vendor trust, an
 ---
 
 ## 📂 Project Structure
+PiSync-v2/
+│
+├── backend/ # Node.js + Express backend
+│ ├── server.js # Main server code
+│ └── data/
+│ └── products.json
+│
+├── frontend/ # React Native frontend
+│ ├── App.js
+│ └── src/screens/
+│ ├── HomeScreen.js
+│ ├── VendorScreen.js
+│ └── CompareScreen.js
+│
+├── README.md
+├── README_EN.md
+└── README_TR.md
