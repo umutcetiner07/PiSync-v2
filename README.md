@@ -45,11 +45,12 @@ cd frontend
 npm install
 npx react-native start
 
-## 📸 Screenshots (optional)
-# Add screenshots here later
-# Example:
-# ![Home Screen](assets/home.png)
-# ![Compare Screen](assets/compare.png)
+
+## 📸 Screenshots
+
+![Home Screen](assets/home.png)
+![Compare Screen](assets/compare.png)
+![Vendor Screen](assets/vendor.png)
 
 ## 🤝 Contributing
 Contributions, issues, and feature requests are welcome!  
