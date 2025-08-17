@@ -1,37 +1,17 @@
-# PiSync 📊
+# PiSync 💱📊
 
-PiSync is a **Decentralized Price Comparison & Vendor Trust Platform** built for the Pi Network ecosystem.
+PiSync is a **Decentralized Price Comparison & Vendor Trust Platform** built for the **Pi Network** ecosystem.  
+It allows users to compare product prices across vendors, build vendor trust, and experience decentralized shopping.
 
-## Features
-- Compare vendor prices side by side
-- Vendor trust and rating system (beta)
-- Pi Payments integration (testnet ready)
-- Mobile app (React Native)
-- Simple backend API (Node.js)
+---
 
-## Installation
+## 🌟 Features
+- 🔍 **Price Comparison** – Easily compare products from different vendors  
+- 👨‍👩‍👧 **Vendor Trust** – Vendors are rated & reviewed by the community  
+- 📱 **Cross-platform App** – Built with React Native for mobile  
+- ⚡ **API Backend** – Node.js + Express backend for secure data handling  
+- 🌎 **Decentralized Vision** – Designed for the Pi Network ecosystem  
 
-### Frontend
-```bash
-cd frontend
-npm install
-npm start
-```
+---
 
-### Backend
-```bash
-cd backend
-npm install
-node server.js
-```
-
-Then open: `http://localhost:5000/products`
-
-## Demo
-- APK: [PiSync_Beta.apk](./docs/PiSync_Beta.apk)
-- Screenshots: see `/docs/screenshots`
-- Pitch Deck: `/docs/pitchdeck.pdf`
-
-## Contributors
-👨‍💻 Founders: [Your Name]
-🚀 Built for Pi Ecosystem
+## 📂 Project Structure
