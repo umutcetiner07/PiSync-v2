@@ -49,8 +49,11 @@ npx react-native start
 ## 📸 Screenshots
 
 ![Home Screen](assets/home.png)
+
 ![Compare Screen](assets/compare.png)
+
 ![Vendor Screen](assets/vendor.png)
+
 
 ## 🤝 Contributing
 Contributions, issues, and feature requests are welcome!  
