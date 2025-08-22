@@ -1,65 +1,144 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PiSync – Decentralized Price Comparison & Vendor Trust</title>
-  <link rel="icon" href="assets/icon.png" />
+  <title>PiSync — Testnet Demo</title>
+  <meta name="description" content="PiSync testnet demo: Pi SDK login and test payment." />
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#faf7ff; color:#1b1136; }
-    header { text-align:center; padding:48px 16px; background:#6A0DAD; color:#fff; }
-    header img { width:96px; height:96px; border-radius:20px; background:#fff; padding:8px; }
-    h1 { margin:16px 0 8px; }
-    p.lead { margin:0 auto; max-width:800px; opacity:.95; }
-    main { max-width:980px; margin:0 auto; padding:24px 16px 64px; }
-    .cards { display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:16px; }
-    .card { background:#fff; border:1px solid #eee; border-radius:12px; padding:16px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
-    .screens { display:flex; gap:12px; flex-wrap:wrap; margin-top:12px; }
-    .screens img { width:300px; max-width:100%; border:1px solid #eee; border-radius:10px; }
-    .btns { display:flex; gap:12px; flex-wrap:wrap; margin-top:20px; }
-    .btn { text-decoration:none; padding:12px 16px; border-radius:10px; font-weight:600; }
-    .primary { background:#6A0DAD; color:#fff; }
-    .ghost { border:1px solid #6A0DAD; color:#6A0DAD; background:#fff; }
-    footer { text-align:center; padding:24px; color:#5b4d7a; }
+    :root{
+      --pi:#5a2ca0; --bg:#f7f5fb; --card:#ffffff; --text:#1f1634; --muted:#6b5a86;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu; color:var(--text); background:var(--bg);
+    }
+    header{
+      padding:20px 16px; background:linear-gradient(160deg,#6a36c9,#4d249e); color:#fff;
+    }
+    .wrap{max-width:940px; margin:0 auto; padding:0 16px;}
+    .brand{display:flex; align-items:center; gap:12px;}
+    .brand .logo{
+      width:40px; height:40px; border-radius:10px; background:#fff1; display:grid; place-items:center; border:1px solid #ffffff33;
+      font-weight:700;
+    }
+    h1{margin:0; font-size:22px}
+    main{padding:24px 0 64px}
+    .card{
+      background:var(--card); border:1px solid #e9e3f6; border-radius:12px; padding:18px; margin:16px 0;
+      box-shadow:0 4px 18px rgba(90,44,160,0.06);
+    }
+    .row{display:flex; flex-wrap:wrap; gap:16px}
+    .row > .card{flex:1 1 280px}
+    button{
+      padding:10px 16px; border-radius:10px; border:1px solid #d8cfee; background:#fff; color:var(--pi);
+      font-weight:600; cursor:pointer; transition:.18s ease; box-shadow:0 2px 8px rgba(90,44,160,0.08);
+    }
+    button.primary{background:var(--pi); color:#fff; border-color:#4f239d}
+    button:hover{transform:translateY(-1px)}
+    code, .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    .status{color:var(--pi); font-weight:600}
+    footer{padding:24px 16px; color:var(--muted); text-align:center}
+    a{color:var(--pi); text-decoration:none}
+    .pill{display:inline-block; padding:3px 8px; border-radius:999px; background:#efe9fb; color:var(--pi); font-size:12px; font-weight:700}
   </style>
 </head>
 <body>
   <header>
-    <img src="assets/icon.png" alt="PiSync icon" />
-    <h1>PiSync</h1>
-    <p class="lead">Decentralized price comparison and vendor trust for the Pi Network. Compare prices, discover trusted vendors, pay in Pi.</p>
-    <div class="btns">
-      <a class="btn primary" href="https://github.com/umutcetiner07/PiSync-v2" target="_blank" rel="noopener">View Source on GitHub</a>
+    <div class="wrap">
+      <div class="brand">
+        <div class="logo">π</div>
+        <div>
+          <h1>PiSync — Testnet Demo</h1>
+          <div class="pill mono">Netlify • Testnet</div>
+        </div>
+      </div>
     </div>
   </header>
 
-  <main>
-    <div class="cards">
-      <div class="card">
-        <h3>Why PiSync?</h3>
-        <p>Transparency and trust are missing in Pi commerce. PiSync lets Pioneers compare prices across vendors and see reputation signals.</p>
+  <main class="wrap">
+    <div class="card">
+      <h2>Welcome</h2>
+      <p>This is a minimal demo to verify Pi SDK login and a User‑to‑App test payment (PiTest) for Hackathon step 11.</p>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
+        <button class="primary" onclick="piLogin()">Login with Pi</button>
+        <button onclick="testPayment()">Test Payment (1 PiTest)</button>
       </div>
-      <div class="card">
-        <h3>Built for Pi</h3>
-        <p>Pi-first utility: listings, comparisons and future monetization happen in Pi across the platform.</p>
-      </div>
-      <div class="card">
-        <h3>Status</h3>
-        <p>MVP in progress. Seeking early feedback and partners via Pi Ventures & Hackathon.</p>
-      </div>
+      <p id="status" class="status" style="margin-top:10px;"></p>
     </div>
 
-    <h2 style="margin-top:28px;">Screenshots</h2>
-    <div class="screens">
-      <img src="assets/home.png" alt="Home screen" />
-      <img src="assets/compare.png" alt="Compare screen" />
-      <img src="assets/vendor.png" alt="Vendor screen" />
+    <div class="row">
+      <div class="card">
+        <h3>How to test</h3>
+        <ol>
+          <li>Open this page in Pi Browser.</li>
+          <li>Tap “Login with Pi” and authorize.</li>
+          <li>Tap “Test Payment” and follow the Pi payment overlay.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>Links</h3>
+        <ul>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/terms.html">Terms of Service</a></li>
+          <li><a href="https://developer.minepi.com/" target="_blank" rel="noopener">Pi Developer</a></li>
+        </ul>
+      </div>
     </div>
   </main>
 
   <footer>
-    © PiSync – A utility for the Pi Network ecosystem
+    © 2025 PiSync — Demo for Pi Network Testnet
   </footer>
+
+  <!-- Pi SDK -->
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+  <script>
+    // Initialize Pi SDK
+    Pi.init({ version: "2.0" });
+
+    async function piLogin() {
+      try {
+        const scopes = ['username', 'payments'];
+        const auth = await Pi.authenticate(scopes, onIncompletePaymentFound);
+        document.getElementById('status').textContent = `Logged in as @${auth.user.username}`;
+        window.piUser = auth.user;
+      } catch (e) {
+        alert('Login failed: ' + (e?.message || e));
+      }
+    }
+
+    async function onIncompletePaymentFound(payment) {
+      console.log('Incomplete payment:', payment);
+    }
+
+    async function testPayment() {
+      try {
+        if (!window.piUser) await piLogin();
+        const paymentData = {
+          amount: 1,
+          memo: "PiSync test payment",
+          metadata: { orderId: "demo-" + Date.now() }
+        };
+        const payment = await Pi.createPayment(paymentData, {
+          onReadyForServerApproval: async (paymentId) => {
+            console.log('Approve on server (demo, no backend):', paymentId);
+          },
+          onReadyForServerCompletion: async (paymentId, txid) => {
+            console.log('Complete on server (demo):', paymentId, txid);
+          },
+          onCancel: (reason) => {
+            alert('Payment cancelled: ' + reason);
+          },
+          onError: (error) => {
+            alert('Payment error: ' + (error?.message || error));
+          }
+        });
+        console.log('Payment created:', payment);
+      } catch (e) {
+        alert('Payment failed: ' + (e?.message || e));
+      }
+    }
+  </script>
 </body>
 </html>
-
